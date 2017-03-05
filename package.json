@@ -1,0 +1,35 @@
+{
+  "name": "react-portal-learn",
+  "version": "1.0.0",
+  "description": "To test and learn about react portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "frensley@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-register": "^6.23.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-rimraf": "^0.2.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-portal": "^3.0.0",
+    "react-transform-hmr": "^1.0.4",
+    "run-sequence": "^1.2.2",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^2.2.1",
+    "webpack-livereload-plugin": "^0.10.0",
+    "webpack-stream": "^3.2.0"
+  },
+  "engines": {
+    "node": ">= 4.0"
+  }
+}
