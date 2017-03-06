@@ -8,7 +8,8 @@ import webpack from 'webpack-stream';
 import seq  from 'run-sequence'
 import gulp_plugin_loader from 'gulp-load-plugins';
 import named from 'vinyl-named';
-import wp_config from './webpack.config'
+import webpack_config from './webpack.config'
+import path from 'path'
 
 let plugins = gulp_plugin_loader({
    rename: {
@@ -18,10 +19,19 @@ let plugins = gulp_plugin_loader({
 
 let src_paths = {
     static: ['src/*.html'],
-    entry: 'src/js/app.js'
+    entry: 'src/js/app.js',
+    components: 'src/js/components/'
 };
 
 let build_output = "build_output";
+
+let wp_config = Object.assign(webpack_config, {
+   resolve: {
+       alias: {
+           components: path.resolve(__dirname, src_paths.components)
+       }
+   }
+});
 
 gulp.task('clean', function() {
     return gulp.src(build_output + '/*').pipe(plugins.rm());
@@ -40,7 +50,7 @@ gulp.task('copy src', () => {
 });
 
 gulp.task('build', (cb) => {
-   seq('copy src','bundle',cb);
+   seq('clean','copy src','bundle',cb);
 });
 
 gulp.task('watch', () => {

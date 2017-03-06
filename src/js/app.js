@@ -1,35 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Portal from 'react-portal';
+import React from 'react'
+import { render } from 'react-dom'
+import MapEditorPanel from './components/MapEditorPanel'
 
-export default class App extends React.Component {
+import store from './store'
+import { Provider } from 'react-redux'
 
-    render() {
-        const button1 = <button>Open portal with pseudo modal</button>;
+const wrapper = document.querySelector('#root')
+console.log("store",store)
+render(
+    <Provider store={store}>
+        <MapEditorPanel/>
+    </Provider>,
+    wrapper)
 
-        return (
-            <Portal closeOnEsc closeOnOutsideClick openByClickOn={button1}>
-            <PseudoModal>
-            <h2>Pseudo Modal</h2>
-        <p>This react component is appended to the document body.</p>
-        </PseudoModal>
-        </Portal>
-    );
-    }
-
-}
-
-export class PseudoModal extends React.Component {
-
-    render() {
-        return (
-            <div>
-            {this.props.children}
-    <p><button onClick={this.props.closePortal}>Close this</button></p>
-        </div>
-    );
-    }
-
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
